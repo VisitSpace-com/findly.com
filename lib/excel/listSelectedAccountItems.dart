@@ -1,7 +1,6 @@
-import 'package:findly/providers/account_items_provider.dart';
 import 'package:flutter/material.dart';
 
-import '../assets/constants.dart';
+import '../assets/color_set.dart';
 
 import '../providers/operating_cost_items_provider.dart';
 

@@ -1,12 +1,11 @@
-import 'package:findly/assets/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../excel/listSelectedAccountItems.dart';
+import '../assets/pl_items.dart';
 
+import '../excel/listSelectedAccountItems.dart';
 import '../excel/create_button.dart';
 
-import '../providers/account_items_provider.dart';
 import '../providers/operating_cost_items_provider.dart';
 
 class ExcelBox extends ConsumerStatefulWidget {
@@ -60,18 +59,18 @@ class _ExcelBoxState extends ConsumerState<ExcelBox> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(top: 24, bottom: 8.0, left: 24),
-                      child: Text('売上高',
-                          style: TextStyle(
-                            color: Colors.white,
-                          )),
-                    ),
-
                     Padding(
                       padding:
                           const EdgeInsets.only(top: 24, bottom: 8.0, left: 24),
-                      child: Text(AccountItems.costOfSalesItems.japaneseName,
+                      child: Text(PLItems.salesItems.japaneseName,
+                          style: const TextStyle(
+                            color: Colors.white,
+                          )),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(top: 24, bottom: 8.0, left: 24),
+                      child: Text(PLItems.costOfSalesItems.japaneseName,
                           style: const TextStyle(
                             color: Colors.white,
                           )),
@@ -80,7 +79,7 @@ class _ExcelBoxState extends ConsumerState<ExcelBox> {
                     Padding(
                       padding:
                           const EdgeInsets.only(top: 24, bottom: 8.0, left: 24),
-                      child: Text(AccountItems.operatingCostItems.japaneseName,
+                      child: Text(PLItems.operatingCostItems.japaneseName,
                           style: const TextStyle(
                             color: Colors.white,
                           )),
@@ -88,33 +87,38 @@ class _ExcelBoxState extends ConsumerState<ExcelBox> {
                     listSelectedAccountItems(
                         selectedOperatingCostItems, context, notifier),
                     // AccountItemsNotifier(),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 24, bottom: 8.0, left: 24),
-                      child: Text('営業外収益',
-                          style: TextStyle(
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(top: 24, bottom: 8.0, left: 24),
+                      child: Text(PLItems.nonOperatingIncomeItems.japaneseName,
+                          style: const TextStyle(
                             color: Colors.white,
                           )),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 24, bottom: 8.0, left: 24),
-                      child: Text('営業外費用',
-                          style: TextStyle(
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(top: 24, bottom: 8.0, left: 24),
+                      child: Text(PLItems.nonOperatingExpenseItems.japaneseName,
+                          style: const TextStyle(
                             color: Colors.white,
                           )),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 24, bottom: 8.0, left: 24),
-                      child: Text('特別利益',
-                          style: TextStyle(
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(top: 24, bottom: 8.0, left: 24),
+                      child: Text(PLItems.extraordinaryIncomeItems.japaneseName,
+                          style: const TextStyle(
                             color: Colors.white,
                           )),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 24, bottom: 8.0, left: 24),
-                      child: Text('特別損失',
-                          style: TextStyle(
-                            color: Colors.white,
-                          )),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(top: 24, bottom: 8.0, left: 24),
+                      child:
+                          Text(PLItems.extraordinaryExpenseItems.japaneseName,
+                              style: const TextStyle(
+                                color: Colors.white,
+                              )),
                     ),
                   ],
                 ),

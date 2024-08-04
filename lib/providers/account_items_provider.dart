@@ -2,17 +2,18 @@
 // import 'package:findly/items_button/cost_of_sales_items_button.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../assets/constants.dart';
+import '../assets/pl_items.dart';
 
-final accountItemsProvider = StateNotifierProvider.family<AccountItemsNotifier,
-    List<String>, AccountItems>((ref, name) {
+final accountItemsProvider =
+    StateNotifierProvider.family<AccountItemsNotifier, List<String>, PLItems>(
+        (ref, name) {
   return AccountItemsNotifier(name);
 });
 
 class AccountItemsNotifier extends StateNotifier<List<String>> {
   AccountItemsNotifier(this.name) : super([]);
 
-  final AccountItems name;
+  final PLItems name;
 
   void addItem(String item) {
     if (!state.contains(item)) {

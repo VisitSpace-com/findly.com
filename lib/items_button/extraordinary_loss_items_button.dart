@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../assets/constants.dart';
+import '../assets/color_set.dart';
 
 import '../providers/extraordinary_loss_items_provider.dart';
 

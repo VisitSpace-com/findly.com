@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../assets/pl_items.dart';
 import '../providers/account_item_index_provider.dart';
 
-import '../assets/constants.dart';
+import '../assets/color_set.dart';
 
 class AccountItemsBox extends ConsumerStatefulWidget {
   const AccountItemsBox({super.key});
@@ -18,15 +19,7 @@ class _AccountItemsBoxState extends ConsumerState<AccountItemsBox> {
     final selectedAccountItemIndex =
         ref.watch(selectedAccountItemIndexProvider);
 
-    final List<String> buttonLabels = [
-      '売上高',
-      '売上原価',
-      '販売費及び一般管理費',
-      '営業外収益',
-      '営業外費用',
-      '特別利益',
-      '特別損失',
-    ];
+    final buttonLabels = PLItems.values.map((e) => e.japaneseName).toList();
 
     return Container(
       height: MediaQuery.of(context).size.height * 0.85,
@@ -36,7 +29,6 @@ class _AccountItemsBoxState extends ConsumerState<AccountItemsBox> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: buttonLabels.asMap().entries.map((entry) {
           int idx = entry.key;
-          String label = entry.value;
           bool isSelected = idx == selectedAccountItemIndex;
           return Padding(
             padding: const EdgeInsets.only(top: 16.0),
@@ -53,7 +45,7 @@ class _AccountItemsBoxState extends ConsumerState<AccountItemsBox> {
                 });
               },
               child: Text(
-                label,
+                entry.value,
                 style: TextStyle(
                   color: isSelected
                       ? ColorSet.selectedTextColor

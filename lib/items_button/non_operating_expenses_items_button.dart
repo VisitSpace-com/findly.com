@@ -2,7 +2,7 @@ import 'package:findly/providers/non_operating_expense_items_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../assets/constants.dart';
+import '../assets/color_set.dart';
 
 import '../items/non_operating_expenses_items.dart';
 

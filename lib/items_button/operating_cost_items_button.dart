@@ -2,13 +2,8 @@ import 'package:findly/items/operating_cost_items.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../assets/constants.dart';
+import '../assets/color_set.dart';
 
-// import '../items/operating_cost_items.dart';
-
-import '../assets/constants.dart';
-
-import '../providers/account_items_provider.dart';
 import '../providers/operating_cost_items_provider.dart';
 
 class OperatingCostItemsButton extends ConsumerStatefulWidget {
