@@ -1,13 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final extraordinaryLossItemsProvider =
-    StateNotifierProvider<NonOperatingExpensesItemsNotifier, List<String>>(
-        (ref) {
-  return NonOperatingExpensesItemsNotifier();
+    StateNotifierProvider<ExtraordinaryLossItemsNotifier, List<String>>((ref) {
+  return ExtraordinaryLossItemsNotifier();
 });
 
-class NonOperatingExpensesItemsNotifier extends StateNotifier<List<String>> {
-  NonOperatingExpensesItemsNotifier() : super([]);
+class ExtraordinaryLossItemsNotifier extends StateNotifier<List<String>> {
+  ExtraordinaryLossItemsNotifier() : super([]);
 
   void addItem(String item) {
     if (!state.contains(item)) {

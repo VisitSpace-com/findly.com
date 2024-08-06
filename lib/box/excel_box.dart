@@ -3,10 +3,23 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../assets/pl_items.dart';
 
-import '../excel/listSelectedAccountItems.dart';
-import '../excel/create_button.dart';
-
+import '../providers/non_operating_income_items_provider.dart';
+import '../providers/non_operating_expense_items_provider.dart';
+import '../providers/sales_items_provider.dart';
 import '../providers/operating_cost_items_provider.dart';
+import '../providers/cost_of_sales_items_provider.dart';
+
+import '../selected_account_items/selected_sales_items.dart';
+import '../selected_account_items/selected_cost_of_sales_items.dart';
+import '../selected_account_items/selected_operating_cost_items.dart';
+import '../selected_account_items/selected_non_operating_income_items.dart';
+import '../selected_account_items/selected_non_operating_expense_items.dart';
+import '../selected_account_items/selected_extraordinary_income_items.dart';
+import '../selected_account_items/selected_extraordinary_loss_items.dart';
+import '../providers/extraordinary_income_items_provider.dart';
+import '../providers/extraordinary_loss_items_provider.dart';
+
+import '../excel/create_button.dart';
 
 class ExcelBox extends ConsumerStatefulWidget {
   const ExcelBox({super.key});
@@ -26,8 +39,36 @@ class _ExcelBoxState extends ConsumerState<ExcelBox> {
 
   @override
   Widget build(BuildContext context) {
+    final selectedSalesItems = ref.watch(salesItemsProvider);
+    final salesItemsNotifier = ref.read(salesItemsProvider.notifier);
+
+    final selectedCostOfSalesItems = ref.watch(costOfSalesItemsProvider);
+    final costOfSalesItemsNotifier =
+        ref.read(costOfSalesItemsProvider.notifier);
+
     final selectedOperatingCostItems = ref.watch(operatingCostItemsProvider);
-    final notifier = ref.read(operatingCostItemsProvider.notifier);
+    final operatingCostItemsNotifier =
+        ref.read(operatingCostItemsProvider.notifier);
+
+    final selectedNonOperatingIncomeItems =
+        ref.watch(nonOperatingIncomeItemsProvider);
+    final nonOperatingIncomeItemsNotifier =
+        ref.read(nonOperatingIncomeItemsProvider.notifier);
+
+    final selectedNonOperatingExpenseItems =
+        ref.watch(nonOperatingExpenseItemsProvider);
+    final nonOperatingExpenseItemsNotifier =
+        ref.read(nonOperatingExpenseItemsProvider.notifier);
+
+    final selectedExtraordinaryIncomeItems =
+        ref.watch(extraordinaryIncomeItemsProvider);
+    final extraordinaryIncomeItemsNotifier =
+        ref.read(extraordinaryIncomeItemsProvider.notifier);
+
+    final selectedExtraordinaryLossItems =
+        ref.watch(extraordinaryLossItemsProvider);
+    final extraordinaryLossItemsNotifier =
+        ref.read(extraordinaryLossItemsProvider.notifier);
 
     ref.listen<List<String>>(operatingCostItemsProvider, (previous, next) {
       if (previous != null && next.length > previous.length) {
@@ -62,20 +103,29 @@ class _ExcelBoxState extends ConsumerState<ExcelBox> {
                     Padding(
                       padding:
                           const EdgeInsets.only(top: 24, bottom: 8.0, left: 24),
-                      child: Text(PLItems.salesItems.japaneseName,
-                          style: const TextStyle(
-                            color: Colors.white,
-                          )),
+                      child: Text(
+                        PLItems.salesItems.japaneseName,
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
+                    SelectedSalesItems(
+                        selectedAccountItems: selectedSalesItems,
+                        notifier: salesItemsNotifier),
                     Padding(
                       padding:
                           const EdgeInsets.only(top: 24, bottom: 8.0, left: 24),
-                      child: Text(PLItems.costOfSalesItems.japaneseName,
-                          style: const TextStyle(
-                            color: Colors.white,
-                          )),
+                      child: Text(
+                        PLItems.costOfSalesItems.japaneseName,
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
-
+                    SelectedCostOfSalesItems(
+                        selectedAccountItems: selectedCostOfSalesItems,
+                        notifier: costOfSalesItemsNotifier),
                     Padding(
                       padding:
                           const EdgeInsets.only(top: 24, bottom: 8.0, left: 24),
@@ -84,9 +134,9 @@ class _ExcelBoxState extends ConsumerState<ExcelBox> {
                             color: Colors.white,
                           )),
                     ),
-                    listSelectedAccountItems(
-                        selectedOperatingCostItems, context, notifier),
-                    // AccountItemsNotifier(),
+                    SelectedOperatingCostItems(
+                        selectedAccountItems: selectedOperatingCostItems,
+                        notifier: operatingCostItemsNotifier),
                     Padding(
                       padding:
                           const EdgeInsets.only(top: 24, bottom: 8.0, left: 24),
@@ -95,6 +145,9 @@ class _ExcelBoxState extends ConsumerState<ExcelBox> {
                             color: Colors.white,
                           )),
                     ),
+                    SelectedNonOperatingIncomeItems(
+                        selectedAccountItems: selectedNonOperatingIncomeItems,
+                        notifier: nonOperatingIncomeItemsNotifier),
                     Padding(
                       padding:
                           const EdgeInsets.only(top: 24, bottom: 8.0, left: 24),
@@ -103,6 +156,9 @@ class _ExcelBoxState extends ConsumerState<ExcelBox> {
                             color: Colors.white,
                           )),
                     ),
+                    SelectedNonOperatingExpenseItems(
+                        selectedAccountItems: selectedNonOperatingExpenseItems,
+                        notifier: nonOperatingExpenseItemsNotifier),
                     Padding(
                       padding:
                           const EdgeInsets.only(top: 24, bottom: 8.0, left: 24),
@@ -111,6 +167,9 @@ class _ExcelBoxState extends ConsumerState<ExcelBox> {
                             color: Colors.white,
                           )),
                     ),
+                    SelectedExtraordinaryIncomeItems(
+                        selectedAccountItems: selectedExtraordinaryIncomeItems,
+                        notifier: extraordinaryIncomeItemsNotifier),
                     Padding(
                       padding:
                           const EdgeInsets.only(top: 24, bottom: 8.0, left: 24),
@@ -120,6 +179,9 @@ class _ExcelBoxState extends ConsumerState<ExcelBox> {
                                 color: Colors.white,
                               )),
                     ),
+                    SelectedExtraordinaryLossItems(
+                        selectedAccountItems: selectedExtraordinaryLossItems,
+                        notifier: extraordinaryLossItemsNotifier),
                   ],
                 ),
               ),

@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final nonOperatingExpensesItemsProvider =
+final nonOperatingExpenseItemsProvider =
     StateNotifierProvider<NonOperatingExpenseItemsNotifier, List<String>>(
         (ref) {
   return NonOperatingExpenseItemsNotifier();

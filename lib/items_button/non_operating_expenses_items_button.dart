@@ -20,8 +20,8 @@ class OperatingCostItemsButtonState
 
   @override
   Widget build(BuildContext context) {
-    final selectedItems = ref.watch(nonOperatingExpensesItemsProvider);
-    final notifier = ref.read(nonOperatingExpensesItemsProvider.notifier);
+    final selectedItems = ref.watch(nonOperatingExpenseItemsProvider);
+    final notifier = ref.read(nonOperatingExpenseItemsProvider.notifier);
 
     return Column(
       children: [

@@ -4,16 +4,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../assets/pl_items.dart';
 
+// やっぱfamilyでまとめたいね
+//
+
 final accountItemsProvider =
     StateNotifierProvider.family<AccountItemsNotifier, List<String>, PLItems>(
-        (ref, name) {
-  return AccountItemsNotifier(name);
+        (ref, plItems) {
+  return AccountItemsNotifier(plItems);
 });
 
 class AccountItemsNotifier extends StateNotifier<List<String>> {
-  AccountItemsNotifier(this.name) : super([]);
+  AccountItemsNotifier(this.plItems) : super([]);
 
-  final PLItems name;
+  final PLItems plItems;
 
   void addItem(String item) {
     if (!state.contains(item)) {

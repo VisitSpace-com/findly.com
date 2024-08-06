@@ -1,13 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final nonOperatingIncomeItemsProvider =
-    StateNotifierProvider<NonOperatingExpensesItemsNotifier, List<String>>(
-        (ref) {
-  return NonOperatingExpensesItemsNotifier();
+    StateNotifierProvider<NonOperatingIncomeItemsNotifier, List<String>>((ref) {
+  return NonOperatingIncomeItemsNotifier();
 });
 
-class NonOperatingExpensesItemsNotifier extends StateNotifier<List<String>> {
-  NonOperatingExpensesItemsNotifier() : super([]);
+class NonOperatingIncomeItemsNotifier extends StateNotifier<List<String>> {
+  NonOperatingIncomeItemsNotifier() : super([]);
 
   void addItem(String item) {
     if (!state.contains(item)) {
